@@ -117,11 +117,15 @@ class _HomepageState extends State<Homepage> {
                   size: 27,
                 ),
                 onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => SearchPage(),
-                      ));
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                    content: Text('Comming soon'),
+                    backgroundColor: Colors.green,
+                  ));
+                  // Navigator.push(
+                  //     context,
+                  //     MaterialPageRoute(
+                  //       builder: (context) => SearchPage(),
+                  //     ));
                 },
               ),
             ),
@@ -133,11 +137,15 @@ class _HomepageState extends State<Homepage> {
                   size: 27,
                 ),
                 onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => ContactPage(),
-                      ));
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                    content: Text('Comming soon'),
+                    backgroundColor: Colors.green,
+                  ));
+                  // Navigator.push(
+                  //     context,
+                  //     MaterialPageRoute(
+                  //       builder: (context) => ContactPage(),
+                  //     ));
                 },
               ),
             ),
@@ -149,11 +157,15 @@ class _HomepageState extends State<Homepage> {
                   size: 27,
                 ),
                 onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (context) => ProfilePage(),
-                      ));
+                  ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                    content: Text('Comming soon'),
+                    backgroundColor: Colors.green,
+                  ));
+                  // Navigator.push(
+                  //     context,
+                  //     MaterialPageRoute(
+                  //       builder: (context) => ProfilePage(),
+                  //     ));
                 },
               ),
             ),
