@@ -4,27 +4,41 @@ class MyTextField extends StatelessWidget {
   final TextEditingController controller;
   final String hintText;
   final bool obscureText;
+  final String? errorText;
+  final void Function(String)? onChanged;
+  final String? Function(String?)? validator; // Validator function
 
-  MyTextField(
-      {super.key,
-      required this.controller,
-      required this.hintText,
-      required this.obscureText});
+  MyTextField({
+    Key? key,
+    required this.errorText,
+    required this.controller,
+    required this.hintText,
+    required this.obscureText,
+    this.validator,
+    this.onChanged,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextFormField(
+      // Use TextFormField for validation support
       controller: controller,
       obscureText: obscureText,
       decoration: InputDecoration(
-          enabledBorder:
-              OutlineInputBorder(borderSide: BorderSide(color: Colors.white)),
-          focusedBorder:
-              OutlineInputBorder(borderSide: BorderSide(color: Colors.white)),
-          fillColor: Colors.grey[100],
-          filled: true,
-          hintText: hintText,
-          hintStyle: TextStyle(color: Colors.grey)),
+        errorText: errorText,
+        enabledBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: Colors.white),
+        ),
+        focusedBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: Colors.white),
+        ),
+        fillColor: Colors.grey[100],
+        filled: true,
+        hintText: hintText,
+        hintStyle: TextStyle(color: Colors.grey),
+      ),
+      validator: validator, // Set validator function
+      onChanged: onChanged,
     );
   }
 }

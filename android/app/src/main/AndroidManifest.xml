@@ -8,6 +8,7 @@
     <permission android:name="your.package.name.C2D_MESSAGE" android:protectionLevel="signature" />
     <uses-permission android:name="your.package.name.C2D_MESSAGE" />
     <application
+        android:requestLegacyExternalStorage="true"
         android:label="chat"
         android:name="${applicationName}"
         android:icon="@mipmap/launcher_icon">
@@ -37,6 +38,9 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
+        <meta-data
+            android:name="com.google.firebase.appcheck.v1.AppCheckProviderFactory"
+            android:value="com.google.firebase.appcheck.playintegrity.PlayIntegrityAppCheckProviderFactory" />
     </application>
     <!-- Required to query activities that can process text, see:
          https://developer.android.com/training/package-visibility?hl=en and

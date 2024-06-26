@@ -1,16 +1,27 @@
-import 'package:chat/model/Notificationclass.dart';
+import 'package:chat/firebase_options.dart';
 import 'package:chat/services/auth/auth_gate.dart';
 import 'package:chat/services/auth/auth_service.dart';
+import 'package:firebase_app_check/firebase_app_check.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_downloader/flutter_downloader.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+  await Firebase.initializeApp(options: DefaultFirebaseOptions.currentPlatform);
+  await FlutterDownloader.initialize(
+    debug:
+        true, // optional: set to false to disable printing logs to console (default: true)
+  );
+  FirebaseAppCheck firebaseAppCheck = FirebaseAppCheck.instance;
+  await firebaseAppCheck.activate(
+    androidProvider:
+        AndroidProvider.playIntegrity, // or AndroidProvider.safetyNet
+    appleProvider: AppleProvider.deviceCheck, // or AppleProvider.appAttest
+  );
   // await FirebaseApi().initNotification();
   // FirebaseMessaging.onMessage.listen((RemoteMessage message) {
   //   print(message.notification!.title);
@@ -72,7 +83,7 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       theme: ThemeData(
         // Use GoogleFonts for the text theme
-        textTheme: GoogleFonts.poppinsTextTheme(
+        textTheme: GoogleFonts.aBeeZeeTextTheme(
           Theme.of(context).textTheme,
         ),
       ),

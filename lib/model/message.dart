@@ -8,6 +8,8 @@ class Message {
   final String SenderEmail;
   final String SenderId;
   final bool isImage;
+  final String? mediaUrl; // URL of the media (image or video)
+  final bool hasMedia; // New field to indicate media presence
 
   Message({
     required this.SenderUsername,
@@ -16,7 +18,9 @@ class Message {
     required this.ReciverId,
     required this.SenderEmail,
     required this.SenderId,
-    this.isImage = false, // Add a flag to indicate if the message is an image
+    this.isImage = false,
+    this.mediaUrl, // Add mediaUrl to store image or video URL
+    this.hasMedia = false, // Indicates if there is any media
   });
 
   Map<String, dynamic> toMap() {
@@ -27,7 +31,9 @@ class Message {
       'ReciverId': ReciverId,
       'SenderEmail': SenderEmail,
       'SenderId': SenderId,
-      'isImage': isImage, // Include the isImage flag in the map
+      'isImage': isImage,
+      'mediaUrl': mediaUrl, // Include the mediaUrl in the map
+      'hasMedia': hasMedia, // Include hasMedia in the map
     };
   }
 
@@ -39,8 +45,9 @@ class Message {
       ReciverId: map['ReciverId'],
       SenderEmail: map['SenderEmail'],
       SenderId: map['SenderId'],
-      isImage:
-          map['isImage'] ?? false, // Default to false if the field is missing
+      isImage: map['isImage'] ?? false,
+      mediaUrl: map['mediaUrl'], // Assign mediaUrl from the map
+      hasMedia: map['hasMedia'] ?? false, // Assign hasMedia from the map
     );
   }
 }

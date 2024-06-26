@@ -1,9 +1,5 @@
-import 'package:chat/Pages/AddPage.dart';
 import 'package:chat/Pages/ChatPage.dart';
-import 'package:chat/Pages/ContactPage.dart';
-import 'package:chat/Pages/ProfilePage.dart';
 import 'package:chat/Pages/register_Page.dart';
-import 'package:chat/Pages/searchPage.dart';
 import 'package:chat/services/auth/auth_service.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -25,22 +21,6 @@ class _HomepageState extends State<Homepage> {
     final authService = Provider.of<AuthService>(context, listen: false);
     authService.SingOut();
     print("User signed out");
-  }
-
-  int _selectedIndex = 0;
-
-  static const List<Widget> _widgetOptions = <Widget>[
-    Homepage(),
-    SearchPage(),
-    newUser(),
-    ContactPage(),
-    ProfilePage(),
-  ];
-
-  void _onItemTapped(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
   }
 
   List<String> images = [
@@ -69,7 +49,7 @@ class _HomepageState extends State<Homepage> {
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.blue,
+        backgroundColor: Colors.black,
         shape: CircleBorder(),
         // backgroundColor: GlobalColors.darkBlueColor,
         child: const Icon(
@@ -118,7 +98,7 @@ class _HomepageState extends State<Homepage> {
                 ),
                 onPressed: () {
                   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                    content: Text('Comming soon'),
+                    content: Text('Coming soon'),
                     backgroundColor: Colors.green,
                   ));
                   // Navigator.push(
@@ -138,7 +118,7 @@ class _HomepageState extends State<Homepage> {
                 ),
                 onPressed: () {
                   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                    content: Text('Comming soon'),
+                    content: Text('Coming soon'),
                     backgroundColor: Colors.green,
                   ));
                   // Navigator.push(
@@ -158,7 +138,7 @@ class _HomepageState extends State<Homepage> {
                 ),
                 onPressed: () {
                   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                    content: Text('Comming soon'),
+                    content: Text('Coming soon'),
                     backgroundColor: Colors.green,
                   ));
                   // Navigator.push(
@@ -295,7 +275,7 @@ class _HomepageState extends State<Homepage> {
 
   Widget _OptionButton() {
     return Container(
-      height: 45,
+      height: MediaQuery.of(context).size.height * 0.04,
       width: MediaQuery.of(context).size.width * 0.4,
       decoration: BoxDecoration(
           border: Border.all(color: Colors.black),
@@ -304,7 +284,7 @@ class _HomepageState extends State<Homepage> {
       child: Row(
         children: [
           SizedBox(
-            width: 10,
+            width: MediaQuery.of(context).size.width * 0.020,
           ),
           Text("Message"),
           VerticalDivider(
